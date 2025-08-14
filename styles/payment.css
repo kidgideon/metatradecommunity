@@ -1,5 +1,5 @@
 /* 
-this is the base color for this project #dd5339 */
+this is the base color for this project #006f94 */
 
 .adminPaymentInterface {
     width: 100%;
@@ -30,12 +30,12 @@ this is the base color for this project #dd5339 */
     border: none;
     background-color: rgb(218, 218, 218);
     border-radius: 10px;
-    color: black;
+    color: #003242;
 }
 
 .add-payment-channels i {
     font-size: 50px;
-    color: #dd5339 ;
+    color: #006f94 ;
     cursor: pointer;
 }
 
@@ -54,7 +54,7 @@ this is the base color for this project #dd5339 */
     margin: 15px;
     padding: 20px;
     border-radius: 16px;
-    background: black;
+    background: #003242;
     color: white;
     display: flex;
     justify-content: center;
@@ -72,7 +72,7 @@ this is the base color for this project #dd5339 */
 
 .payment-channel i {
     font-size: 50px;
-    color: #dd5339;
+    color: #006f94;
     margin-bottom: 10px;
 }
 
@@ -115,7 +115,7 @@ this is the base color for this project #dd5339 */
 }
 
 .payment-requests h2 {
-      color: #dd5339 ;
+      color: #006f94 ;
 }
 
 /* Filter buttons */
@@ -131,7 +131,7 @@ this is the base color for this project #dd5339 */
 .filter-buttons button {
   padding: 8px 16px;
   border: none;
-  background-color: black;
+  background-color: #003242;
   color: white;
   border-radius: 8px;
   cursor: pointer;
@@ -139,11 +139,11 @@ this is the base color for this project #dd5339 */
 }
 
 .filter-buttons button:hover {
-  background-color: #dd5339;
+  background-color: #006f94;
 }
 
 .filter-buttons .active {
-  background-color: #dd5339;
+  background-color: #006f94;
   font-weight: bold;
 }
 
@@ -158,7 +158,7 @@ this is the base color for this project #dd5339 */
 .request-table table {
   width: 100%;
   border-collapse: collapse;
-  background-color: black;
+  background-color: #003242;
   color: white;
   border-radius: 12px;
   overflow: hidden;
@@ -182,7 +182,7 @@ this is the base color for this project #dd5339 */
 }
 
 .request-table td a {
-  color: #dd5339;
+  color: #006f94;
   text-decoration: underline;
   font-weight: 500;
 }

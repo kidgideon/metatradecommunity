@@ -238,7 +238,7 @@ const DashboardNav = () => {
         </div>
         <div className="notification-area" style={{ position: "relative" }}>
           <i
-            style={{ color: "black", cursor: "pointer", position: "relative" }}
+            style={{ color: "#003242", cursor: "pointer", position: "relative" }}
             className="fa-solid fa-bell"
             onClick={() => setNotificationOpen(true)}
           ></i>

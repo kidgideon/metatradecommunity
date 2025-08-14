@@ -4,22 +4,22 @@
 :root {
   --primary-bg: #ffffff;
   --secondary-bg: #f8fafc;
-  --accent-purple: #dd5339;
-  --light-purple: #ff694b;
-  --dark-text: #350900;
+  --accent-purple: #006f94;
+  --light-purple: #006f94;
+  --dark-text: #006f94;
   --gray-text: #64748b;
   --light-gray: #f1f5f9;
   --white: #ffffff;
   --white-80: rgba(255, 255, 255, 0.8);
   --white-60: rgba(255, 255, 255, 0.6);
-  --white-10: rgba(255, 255, 255, 0.1);
-  --white-20: rgba(255, 255, 255, 0.2);
-  --dark-overlay: #350900;
+  --white-10: black;
+  --white-20: gray;
+  --dark-overlay: #003446;
   --glass-bg: rgba(255, 255, 255, 0.95);
-  --glass-border: #350900;
+  --glass-border: #004157;
   --gradient-primary: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
-  --gradient-accent: linear-gradient(135deg, #dd5339 0%, #f86447 100%);
-  --gradient-hero: linear-gradient(135deg, black 0%, black 50%, black 100%);
+  --gradient-accent: linear-gradient(135deg, #006f94 0%, #006f94 100%);
+  --gradient-hero: linear-gradient(135deg, #003242 0%, #003242 50%, #003242 100%);
 }
 
 
@@ -38,7 +38,7 @@
   z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #003242;
   padding: 16px 0;
 }
 
@@ -123,13 +123,13 @@
 .btnPrimary {
   background: var(--accent-purple);
   color: var(--white);
-  box-shadow: 0 4px 15px #dd5339;
+  box-shadow: 0 4px 15px #006f94;
 }
 
 .btnPrimary:hover {
-  background: #dd5339;
+  background: #006f94;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px #dd5339;
+  box-shadow: 0 8px 25px #006f94;
 }
 
 .mobileMenuBtn {
@@ -144,7 +144,7 @@
 .mobileMenu {
   display: none;
   padding: 20px 0;
-  border-top: 1px solid #2c0700;
+  border-top: 1px solid #006f94;
 }
 
 .mobileNav {
@@ -186,7 +186,7 @@
   left: 5%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, black 0%, transparent 70%);
+  background: radial-gradient(circle, #003242 0%, transparent 70%);
   border-radius: 50%;
   animation: float 6s ease-in-out infinite;
 }
@@ -198,7 +198,7 @@
   right: 5%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(192, 132, 252, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, #006f94 0%, transparent 70%);
   border-radius: 50%;
   animation: float 6s ease-in-out infinite reverse;
 }
@@ -269,12 +269,12 @@
 
 /* Dashboard Preview */
 .dashboardPreview {
-  background: rgba(255, 255, 255, 0.1);
+  background: #006f94;
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
   padding: 32px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px #006f94;
 }
 
 .dashboardHeader {
@@ -310,7 +310,7 @@
 
 .chartContainer {
   height: 160px;
-  background: linear-gradient(135deg, #4b0d00 0%, rgba(192, 132, 252, 0.2) 100%);
+  background: linear-gradient(135deg, white 0%, rgba(192, 132, 252, 0.2) 100%);
   border-radius: 12px;
   display: flex;
   align-items: end;
@@ -437,17 +437,17 @@
 
 .featureCard {
   background: var(--white);
-  border: 1px solid #470c00;
+  border: 1px solid #006f94;
   border-radius: 20px;
   padding: 32px;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px #470c00;
+  box-shadow: 0 4px 20px #006f94;
 }
 
 .featureCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px black;
+  box-shadow: 0 20px 40px #006f94;
 }
 
 .featureIcon {
@@ -521,10 +521,10 @@
 
 .cryptoPrices {
   background: var(--white);
-  border: 1px solid black;
+  border: 1px solid #003242;
   border-radius: 24px;
   padding: 32px;
-  box-shadow: 0 10px 30px black;
+  box-shadow: 0 10px 30px #003242;
 }
 
 .pricesHeader {
@@ -557,7 +557,7 @@
 }
 
 .priceItem:hover {
-  background: black;
+  background: #003242;
 }
 
 .cryptoInfo {
@@ -634,16 +634,16 @@
 
 .advantageCard {
   background: var(--white);
-  border: 1px solid black;
+  border: 1px solid #003242;
   border-radius: 16px;
   padding: 24px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px black;
+  box-shadow: 0 4px 15px #003242;
 }
 
 .advantageCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 30px black;
+  box-shadow: 0 15px 30px #003242;
 }
 
 .advantageIcon {
@@ -842,19 +842,19 @@
 
 .metricCard {
   background: var(--white);
-  border: 1px solid black;
+  border: 1px solid #003242;
   border-radius: 18px;
   padding: 32px 20px;
   text-align: center;
   transition: box-shadow 0.3s, transform 0.3s;
-  box-shadow: 0 4px 16px black;
+  box-shadow: 0 4px 16px #003242;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .metricCard:hover {
-  box-shadow: 0 10px 32px black;
+  box-shadow: 0 10px 32px #003242;
   transform: translateY(-4px) scale(1.03);
 }
 
@@ -885,7 +885,7 @@
   padding: 48px 32px;
   margin-bottom: 0;
   margin-top: 32px;
-  box-shadow: 0 4px 24px black;
+  box-shadow: 0 4px 24px #003242;
 }
 
 .securityContent {
@@ -943,11 +943,11 @@
 
 .securityCard {
   background: var(--white);
-  border: 1.5px solid black;
+  border: 1.5px solid #003242;
   border-radius: 18px;
   padding: 36px 24px;
   text-align: center;
-  box-shadow: 0 4px 16px black;
+  box-shadow: 0 4px 16px #003242;
   display: flex;
   flex-direction: column;
   align-items: center;

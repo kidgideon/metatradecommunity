@@ -62,9 +62,7 @@ const Signup = () => {
 
       <div className="signupForm">
         <div className="topLayer">
-          <span>Join</span>
-          <i className="fa-solid fa-bolt icon"></i>
-          <h3 className="iconText">Qbtrades</h3>
+        <span>Create Portfolio</span>
         </div>
 
         <form className="formInputsSign" onSubmit={handleSignup}>

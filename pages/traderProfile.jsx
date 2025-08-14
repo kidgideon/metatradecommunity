@@ -229,7 +229,7 @@ const CopyTraderProfile = () => {
                     <td>{t.amount}</td>
                     <td>{t.value}</td>
                     <td>{t.date}</td>
-                    <td style={{ color: "#dd5339", fontWeight: 600 }}>{t.note}</td>
+                    <td style={{ color: "#006f94", fontWeight: 600 }}>{t.note}</td>
                   </tr>
                 ))}
               </tbody>
@@ -247,7 +247,7 @@ const CopyTraderProfile = () => {
                 {fakeTrades.map((t, i) => (
                   <li key={i}>
                     <strong>{t.type}</strong> {t.amount} {t.asset} — {t.value} on {t.date}{" "}
-                    <span style={{ color: "#dd5339" }}>{t.note}</span>
+                    <span style={{ color: "#006f94" }}>{t.note}</span>
                   </li>
                 ))}
               </ul>

@@ -11,7 +11,7 @@ const CRYPTOS = [
   { id: "arbitrum", symbol: "ARB", name: "Arbitrum", style: { background: "linear-gradient(135deg, #ff4b1f, #1fddff)" } },
   { id: "pepe", symbol: "PEPE", name: "Pepe Coin", style: { background: "linear-gradient(135deg, #ff0080, #7928ca)" } },
   { id: "near", symbol: "NEAR", name: "NEAR Protocol", style: { background: "linear-gradient(135deg, #00c6ff, #0072ff)" } },
-  { id: "ethereum-classic", symbol: "ETC", name: "Ethereum Classic", style: { background: "linear-gradient(135deg, #f7971e, #ffd200)", color: "black" } },
+  { id: "ethereum-classic", symbol: "ETC", name: "Ethereum Classic", style: { background: "linear-gradient(135deg, #f7971e, #ffd200)", color: "#003242" } },
 ];
 
 const STOCKS = [

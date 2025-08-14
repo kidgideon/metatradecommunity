@@ -61,7 +61,7 @@
 
 .wallet-actual-balanec button {
     padding: 10px 40px;
-    background-color: #dd5339;
+    background-color: #006f94;
     color: white;
     border: none;
     border-radius: 10px;
@@ -95,7 +95,7 @@
 }
 
 .walletSeelction-Method input[type="radio"] {
-  accent-color: #dd5339;
+  accent-color: #006f94;
   width: 18px;
   height: 18px;
   margin-right: 8px;
@@ -141,7 +141,7 @@
 }
 
 .wallet-modal button {
-  background-color: #dd5339;
+  background-color: #006f94;
   color: white;
   border: none;
   padding: 10px;
@@ -163,7 +163,7 @@
   padding: 15px;
   margin-bottom: 10px;
   background: #f9f9f9;
-  border-left: 5px solid #dd5339;
+  border-left: 5px solid #006f94;
   border-radius: 8px;
 }
 

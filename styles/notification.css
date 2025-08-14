@@ -4,7 +4,7 @@
   right: 30px;
   width: 400px;
   height: 500px;
-  background-color: black;
+  background-color: #003242;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -51,11 +51,11 @@
   width: 6px;
 }
 .scrolls::-webkit-scrollbar-thumb {
-  background: #dd5339 ;
+  background: #006f94 ;
   border-radius: 4px;
 }
 .scrolls::-webkit-scrollbar-track {
-  background: black;
+  background: #003242;
 }
 
 .notification {
@@ -65,11 +65,11 @@
   padding: 12px 10px;
   border-radius: 12px;
   text-decoration: none;
-  background-color: #dd5339;
+  background-color: #006f94;
   transition: background 0.2s ease;
 }
 .notification:hover {
-  background-color: #dd5339 ;
+  background-color: #006f94 ;
 }
 
 .read {

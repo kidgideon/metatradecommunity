@@ -22,7 +22,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               Invest Smarter with{' '}
-              <span className={styles.gradientText}>Qbtrades</span>
+              <span className={styles.gradientText}>meta trade community</span>
             </motion.h1>
             
             <motion.p 
@@ -46,7 +46,7 @@ const Hero = () => {
               <motion.a 
                 href="/signup" 
                 className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px black" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px #003242" }}
                 whileTap={{ scale: 0.95 }}
               >
                 <i className="fas fa-rocket"></i>

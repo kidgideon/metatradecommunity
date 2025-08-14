@@ -3,7 +3,7 @@
   width: 100%;
   height: 50px;
   overflow: hidden;
-  background-color: black;
+  background-color: #003242;
   padding: 10px 0;
   display: flex;
   justify-content: center;
@@ -24,12 +24,12 @@
 
 .sliding-stocks-component::before {
   left: 0;
-  background: linear-gradient(to right, black, black);
+  background: linear-gradient(to right, #003242, #003242);
 }
 
 .sliding-stocks-component::after {
   right: 0;
-  background: linear-gradient(to left, black, black);
+  background: linear-gradient(to left, #003242, #003242);
 }
 
 .sliding-track {
@@ -61,7 +61,7 @@
 .stock-symbol {
   font-weight: 600;
   margin-right: 6px;
-  color: #dd5339 ;
+  color: #006f94 ;
 }
 
 .stock-price {

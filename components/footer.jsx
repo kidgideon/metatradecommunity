@@ -5,7 +5,7 @@ const Footer = () => (
         <div className="footer-modern-content">
             <div className="footer-brand">
                 <div>
-                    <i className="fa-solid fa-bolt icon"></i> Qbtrades
+                    <i className="fa-solid fa-bolt icon"></i> meta trade community
                 </div>
                 <p>Empowering your financial future, one trade at a time.</p>
             </div>
@@ -38,7 +38,7 @@ const Footer = () => (
             </div>
         </div>
         <div className="footer-modern-bottom">
-            <span>&copy; {new Date().getFullYear()} Qbtrades. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} meta trade community. All rights reserved.</span>
         </div>
     </footer>
 );

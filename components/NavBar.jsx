@@ -30,8 +30,7 @@ const NavBar = () => {
         <nav className="homePageNav fade-in">
             <div className="navStart">
                 <div className="iconSection" style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
-                    <i style={{ marginLeft: "30px" }} className="fa-solid fa-bolt icon"></i>
-                    <h3 className="iconText">Qbtrades</h3>
+                    <h3 className="iconText" style={{marginLeft: "10px"}} >meta trade community</h3>
                 </div>
             </div>
 

@@ -7,7 +7,7 @@
 .x-users-title {
   text-align: center;
   margin-bottom: 24px;
-  color: black;
+  color: #003242;
 }
 
 .x-users-grid {
@@ -23,7 +23,7 @@
   align-items: center;
   width: 260px;
   background: #fff;
-  border: 2px solid #dd5339;
+  border: 2px solid #006f94;
   border-radius: 12px;
   padding: 16px;
   transition: all 0.3s ease-in-out;
@@ -45,12 +45,12 @@
 .x-user-info p {
   margin: 4px 0;
   font-size: 0.95rem;
-  color: black;
+  color: #003242;
   text-align: center;
 }
 
 .x-user-action-btn {
-  background: #dd5339;
+  background: #006f94;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -109,7 +109,7 @@
 }
 
 .x-popup-btn.primary {
-  background: #dd5339;
+  background: #006f94;
   color: white;
 }
 
@@ -120,7 +120,7 @@
 
 .x-popup-btn.cancel {
   background: #ccc;
-  color: black;
+  color: #003242;
 }
 
 @media (max-width: 768px) {

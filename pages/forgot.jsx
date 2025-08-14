@@ -32,7 +32,7 @@ const ForgotPassword = () => {
         <span style={{width: "100%", textAlign: "center"}}>Reset Password</span>
         <div className="topLayer">
           <i className="fa-solid fa-bolt icon"></i>
-          <h3 className="iconText">Qbtrades</h3>
+          <h3 className="iconText">meta trade community</h3>
         </div>
 
         <div className="formInputsSign">

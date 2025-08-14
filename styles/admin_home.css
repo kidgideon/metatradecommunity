@@ -73,7 +73,7 @@
 }
 
 .buttonAdmin {
-  background-color: #dd5339 ;
+  background-color: #006f94 ;
   color: #ffffff;
   border: none;
   padding: 12px 28px;
@@ -81,19 +81,19 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 4px 10px black;
+  box-shadow: 0 4px 10px #003242;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s;
 }
 
 .buttonAdmin:hover {
-  background-color: #dd5339 ;
-  box-shadow: 0 6px 16px black;
+  background-color: #006f94 ;
+  box-shadow: 0 6px 16px #003242;
   transform: translateY(-2px);
 }
 
 .buttonAdmin:active {
   background-color: #ff684a ;
-  box-shadow: 0 2px 8px black;
+  box-shadow: 0 2px 8px #003242;
   transform: translateY(0);
 }
 

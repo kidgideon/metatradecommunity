@@ -33,10 +33,8 @@ const Login = () => {
     <div className="authpage-interface">
       <NavBar />
       <div className="authpage-form">
-        <span className="welcomeBack">Welcome Back</span>
         <div className="topLayer">
-          <i className="fa-solid fa-bolt icon"></i>
-          <h3 className="iconText">Qbtrades</h3>
+        <span className="welcomeBack">Welcome Back</span>
         </div>
         <form className="authpage-formInputs" onSubmit={handleSubmit}>
           <input

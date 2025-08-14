@@ -1,7 +1,11 @@
-/* background black */
+/* background #003242 */
 * {
   font-family: 'Montserrat', sans-serif;
 }
+/* 
+#003242 — bright cyan blue
+
+ —#006f94 light sky blue  */
 
 .containers {
   width: 100%;
@@ -10,6 +14,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 
 body {
     margin: 0px;
@@ -22,7 +27,7 @@ body {
 }
 
 .iconText {
-    color: #dd5339
+    color: #006f94;
 }
 
 a {
@@ -34,6 +39,6 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  color: black;
+  color: #003242;
   background-color: #fff;
 }

@@ -80,7 +80,7 @@ const Feed = () => {
   };
 
   const handleAvatarClick = () => {
-    toast("This post was made by Qbtrades Admin 👑");
+    toast("This post was made by meta trade community Admin 👑");
   };
 
   const handleShare = () => {
@@ -127,7 +127,7 @@ const Feed = () => {
                       style={{ cursor: "pointer" }}
                     />
                     <div>
-                      <h4>Qbtrades</h4>
+                      <h4>meta trade community</h4>
                       <p>{formattedDate}</p>
                     </div>
                   </div>
@@ -164,7 +164,7 @@ const Feed = () => {
                       <span className="app-feed-icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          fill={isLiked ? "#dd5339 " : "none"}
+                          fill={isLiked ? "#006f94 " : "none"}
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
                           stroke="currentColor"

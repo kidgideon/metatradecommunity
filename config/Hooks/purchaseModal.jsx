@@ -44,7 +44,7 @@ export const PurchaseModal = ({ asset, onClose, userId }) => {
         transition={{ duration: 0.3 }}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 style={{ color: "#dd5339" }}>Buy {asset.name}</h2>
+        <h2 style={{ color: "#006f94" }}>Buy {asset.name}</h2>
         <p>Price per unit: ${asset.price.toFixed(2)}</p>
         <input
           type="number"
@@ -59,7 +59,7 @@ export const PurchaseModal = ({ asset, onClose, userId }) => {
             marginTop: "1rem",
             padding: "0.7rem",
             width: "100%",
-            background: "#dd5339",
+            background: "#006f94",
             color: "#fff",
             border: "none",
             borderRadius: "5px",
