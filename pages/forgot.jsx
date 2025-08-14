@@ -17,11 +17,11 @@ const ForgotPassword = () => {
     }
     try {
       await sendPasswordResetEmail(auth, email);
-      toast.success("✅ Reset link sent. Check your email!");
+      toast.success(" Reset link sent. Check your email!");
       navigate("/login");
     } catch (error) {
       // Handle known Firebase errors more explicitly if you want
-      toast.error("❌ Failed to send reset email. Check your input.");
+      toast.error(" Failed to send reset email. Check your input.");
     }
   };
 
@@ -29,10 +29,8 @@ const ForgotPassword = () => {
     <div style={{padding: "0px", margin: "0px"}} className="signup-interface">
       <NavBar/>
       <div className="signupForm">
-        <span style={{width: "100%", textAlign: "center"}}>Reset Password</span>
         <div className="topLayer">
-          <i className="fa-solid fa-bolt icon"></i>
-          <h3 className="iconText">meta trade community</h3>
+          <h3 className="iconText"> <span style={{width: "100%", textAlign: "center"}}>Reset Password</span></h3>
         </div>
 
         <div className="formInputsSign">

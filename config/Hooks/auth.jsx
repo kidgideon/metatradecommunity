@@ -58,13 +58,13 @@ const useAuth = () => {
 
       if (!emailSnap.empty) {
         toast.dismiss(toastId);
-        toast.error("🚫 Email is already registered.");
+        toast.error("Email is already registered.");
         return { success: false };
       }
 
       if (!usernameSnap.empty) {
         toast.dismiss(toastId);
-        toast.error("🚫 Username is already taken.");
+        toast.error("Username is already taken.");
         return { success: false };
       }
 
@@ -97,7 +97,7 @@ const useAuth = () => {
 
       // Send verification email
       await sendEmailVerification(cred.user);
-      toast.success("📩 Account created! Please check your email for a verification link.", { id: toastId });
+      toast.success("Account created! Please check your email for a verification link.", { id: toastId });
 
       // Sign out immediately to prevent unverified login
       await signOut(auth);
@@ -105,7 +105,7 @@ const useAuth = () => {
 
       return { success: true, uid: cred.user.uid };
     } catch (err) {
-      toast.error(err.message || "❌ Account creation failed.", { id: toastId });
+      toast.error(err.message || "Account creation failed.", { id: toastId });
       return { success: false };
     }
   };
@@ -123,21 +123,21 @@ const login = async (email, password) => {
 
       await signOut(auth);
       toast.error(
-        "🚫 Your email is not verified. We've sent you a new verification email — please check your inbox.",
+        "Your email is not verified. We've sent you a new verification email — please check your inbox.",
         { id: toastId }
       );
       return { success: false };
     }
 
-    toast.success("✅ Logged in successfully!", { id: toastId });
+    toast.success("Logged in successfully!", { id: toastId });
     return { success: true, user: result.user };
   } catch (err) {
     if (err.code === "auth/user-not-found") {
-      toast.error("🚫 No user with this email.", { id: toastId });
+      toast.error("No user with this email.", { id: toastId });
     } else if (err.code === "auth/wrong-password") {
-      toast.error("🚫 Incorrect password.", { id: toastId });
+      toast.error("Incorrect password.", { id: toastId });
     } else {
-      toast.error(err.message || "❌ Login failed.", { id: toastId });
+      toast.error(err.message || "Login failed.", { id: toastId });
     }
     return { success: false };
   }
@@ -158,21 +158,21 @@ const login = async (email, password) => {
 
       if (!docSnap.exists()) {
         // Prevent signup with Google
-        toast.error("🚫 No user with this email. Please sign up using email/password.", { id: toastId });
+        toast.error("No user with this email. Please sign up using email/password.", { id: toastId });
         await signOut(auth);
         return { success: false };
       }
 
       if (!result.user.emailVerified) {
         await signOut(auth);
-        toast.error("🚫 Your email has not been verified. Please verify before logging in.", { id: toastId });
+        toast.error("Your email has not been verified. Please verify before logging in.", { id: toastId });
         return { success: false };
       }
 
-      toast.success("👋 Welcome back!", { id: toastId });
+      toast.success("Welcome back!", { id: toastId });
       return { success: true, user: result.user };
     } catch (err) {
-      toast.error("❌ Google login failed.", { id: toastId });
+      toast.error("Google login failed.", { id: toastId });
       return { success: false };
     }
   };
