@@ -35,6 +35,14 @@ const Wallet = () => {
   const [amount, setAmount] = useState("");
   const [proof, setProof] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  // States for structured payment details
+const [bankName, setBankName] = useState("");
+const [accountNumber, setAccountNumber] = useState("");
+const [routingNumber, setRoutingNumber] = useState("");
+const [accountHolder, setAccountHolder] = useState("");
+
+const [cryptoType, setCryptoType] = useState("");
+const [walletAddress, setWalletAddress] = useState("");
 
   // Withdraw state
   const [showWithdrawModal, setShowWithdrawModal] = useState(false);
@@ -157,43 +165,65 @@ const Wallet = () => {
     }
   };
 
-  // Withdraw logic
-  const submitWithdraw = async () => {
-    if (!withdrawAmount || !withdrawDetails) {
-      toast.error("Please fill in both amount and payment details.");
-      return;
-    }
-    if (!userId) {
-      toast.error("User not authenticated.");
-      return;
-    }
-    try {
-      setSubmitting(true);
-      const toastId = toast.loading("Submitting withdrawal request...");
-      const paymentData = {
-        userId,
-        amount: parseFloat(withdrawAmount),
-        method: withdrawMethod,
-        paymentDetails: withdrawDetails,
-        status: "pending",
-        type: "withdraw",
-        timestamp: serverTimestamp(),
-      };
-      await addDoc(collection(db, "paymentRequests"), paymentData);
-      toast.success("Withdrawal request submitted", { id: toastId });
+// Withdraw logic
+const submitWithdraw = async () => {
+  if (!withdrawAmount) {
+    toast.error("Please enter withdrawal amount.");
+    return;
+  }
 
-      // Reset state
-      setShowWithdrawModal(false);
-      setWithdrawMethod(WITHDRAW_METHODS[0].value);
-      setWithdrawDetails("");
-      setWithdrawAmount("");
-    } catch (err) {
-      console.error("Withdraw Error:", err);
-      toast.error("Withdrawal failed. Please try again.");
-    } finally {
-      setSubmitting(false);
+  let withdrawDetailsString = "";
+  if (withdrawMethod === "bank") {
+    if (!bankName || !accountNumber || !routingNumber || !accountHolder) {
+      toast.error("Please fill in all bank details.");
+      return;
     }
-  };
+    withdrawDetailsString = `Bank Name: ${bankName}\nAccount Number: ${accountNumber}\nRouting Number: ${routingNumber}\nAccount Holder: ${accountHolder}`;
+  } else if (withdrawMethod === "wallet") {
+    if (!cryptoType || !walletAddress) {
+      toast.error("Please fill in all crypto details.");
+      return;
+    }
+    withdrawDetailsString = `Crypto Type: ${cryptoType}\nWallet Address: ${walletAddress}`;
+  }
+
+  if (!userId) {
+    toast.error("User not authenticated.");
+    return;
+  }
+
+  try {
+    setSubmitting(true);
+    const toastId = toast.loading("Submitting withdrawal request...");
+    const paymentData = {
+      userId,
+      amount: parseFloat(withdrawAmount),
+      method: withdrawMethod,
+      paymentDetails: withdrawDetailsString,
+      status: "pending",
+      type: "withdraw",
+      timestamp: serverTimestamp(),
+    };
+    await addDoc(collection(db, "paymentRequests"), paymentData);
+    toast.success("Withdrawal request submitted", { id: toastId });
+
+    // Reset state
+    setShowWithdrawModal(false);
+    setWithdrawMethod(WITHDRAW_METHODS[0].value);
+    setBankName("");
+    setAccountNumber("");
+    setRoutingNumber("");
+    setAccountHolder("");
+    setCryptoType("");
+    setWalletAddress("");
+    setWithdrawAmount("");
+  } catch (err) {
+    console.error("Withdraw Error:", err);
+    toast.error("Withdrawal failed. Please try again.");
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   return (
     <div className="wallet-interface">
@@ -286,62 +316,105 @@ const Wallet = () => {
         </motion.div>
       )}
 
-      {/* Modal 3 - Withdraw */}
-      {showWithdrawModal && (
-        <motion.div className="wallet-modal-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <motion.div className="wallet-modal" initial={{ y: 100 }} animate={{ y: 0 }}>
-            <h3>Withdraw Funds</h3>
-            <div >
-              <label className="walletSeelction-Method">
-                <div>
-               <input
-                  type="radio"
-                  name="withdrawMethod"
-                  value="wallet"
-                  checked={withdrawMethod === "wallet"}
-                  onChange={() => setWithdrawMethod("wallet")}
-                />{" "}
-               <p>Wallet</p> 
-                </div>
-              </label>
-              <label className="walletSeelction-Method">
-                <div>
-                 <input
-                  type="radio"
-                  name="withdrawMethod"
-                  value="bank"
-                  checked={withdrawMethod === "bank"}
-                  onChange={() => setWithdrawMethod("bank")}
-                />{" "}
-                <p> Bank Transfer</p>
-                </div> 
-              </label>
-            </div>
+     {showWithdrawModal && (
+  <motion.div className="wallet-modal-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <motion.div className="wallet-modal" initial={{ y: 100 }} animate={{ y: 0 }}>
+      <h3>Withdraw Funds</h3>
+
+      {/* Method selection */}
+      <div>
+        <label className="walletSeelction-Method">
+          <div>
             <input
-              type="number"
-              placeholder="Amount"
-              value={withdrawAmount}
-              onChange={(e) => setWithdrawAmount(e.target.value)}
+              type="radio"
+              name="withdrawMethod"
+              value="wallet"
+              checked={withdrawMethod === "wallet"}
+              onChange={() => setWithdrawMethod("wallet")}
             />
-            <textarea
-              placeholder={
-                withdrawMethod === "wallet"
-                  ? "Enter your wallet address"
-                  : "Enter your bank details"
-              }
-              value={withdrawDetails}
-              onChange={(e) => setWithdrawDetails(e.target.value)}
-              style={{ minHeight: 60, marginBottom: 12 }}
+            <p>Crypto Wallet</p>
+          </div>
+        </label>
+        <label className="walletSeelction-Method">
+          <div>
+            <input
+              type="radio"
+              name="withdrawMethod"
+              value="bank"
+              checked={withdrawMethod === "bank"}
+              onChange={() => setWithdrawMethod("bank")}
             />
-            <button disabled={submitting} onClick={submitWithdraw}>
-              {submitting ? "Submitting..." : "Send Withdrawal"}
-            </button>
-            <button className="wallet-modal-close" onClick={() => setShowWithdrawModal(false)}>
-              Cancel
-            </button>
-          </motion.div>
-        </motion.div>
+            <p>Bank Transfer</p>
+          </div>
+        </label>
+      </div>
+
+      {/* Amount */}
+      <input
+        type="number"
+        placeholder="Amount"
+        value={withdrawAmount}
+        onChange={(e) => setWithdrawAmount(e.target.value)}
+      />
+
+      {/* Bank Fields */}
+      {withdrawMethod === "bank" && (
+        <>
+          <input
+            type="text"
+            placeholder="Bank Name"
+            value={bankName}
+            onChange={(e) => setBankName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Account Number"
+            value={accountNumber}
+            onChange={(e) => setAccountNumber(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Routing Number"
+            value={routingNumber}
+            onChange={(e) => setRoutingNumber(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Account Holder Name"
+            value={accountHolder}
+            onChange={(e) => setAccountHolder(e.target.value)}
+          />
+        </>
       )}
+
+      {/* Crypto Fields */}
+      {withdrawMethod === "wallet" && (
+        <>
+          <input
+            type="text"
+            placeholder="Cryptocurrency Type (BTC, ETH, USDT...)"
+            value={cryptoType}
+            onChange={(e) => setCryptoType(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Wallet Address"
+            value={walletAddress}
+            onChange={(e) => setWalletAddress(e.target.value)}
+          />
+        </>
+      )}
+
+      <button disabled={submitting} onClick={submitWithdraw}>
+        {submitting ? "Submitting..." : "Send Withdrawal"}
+      </button>
+      <button className="wallet-modal-close" onClick={() => setShowWithdrawModal(false)}>
+        Cancel
+      </button>
+    </motion.div>
+  </motion.div>
+)}
+
     </div>
   );
 };
