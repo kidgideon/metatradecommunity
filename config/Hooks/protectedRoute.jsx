@@ -10,6 +10,7 @@ const ProtectedRoute = ({ children }) => {
   const toastId = useRef(null);
   const timeoutRef = useRef(null);
 
+  
   useEffect(() => {
     // Delay loader to prevent flicker
     timeoutRef.current = setTimeout(() => {
