@@ -1,0 +1,352 @@
+.signup-interface {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #f5f1fa 60%, #dd5339 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+/* Add this for extra safety on all screens */
+.formInputsSign {
+    box-sizing: border-box;
+}
+
+.signupForm {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 4px 32px rgba(162,60,244,0.10);
+    padding: 40px 32px 32px 32px;
+    max-width: 400px;
+    width: 100%;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topLayer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    color: #dd5339;
+    font-weight: bold;
+    letter-spacing: 1px;
+    width: 100%;
+    justify-content: center;
+    font-size: 150%;
+    text-align: center;
+}
+
+.welcomeBack {
+    width: 100%;
+    text-align: center;
+}
+
+
+.formInputsSign {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.formInputsSign input[type="text"],
+.formInputsSign input[type="email"],
+.formInputsSign input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    border: 1.5px solid #e3d7f7;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    background: #faf8fd;
+    color: black;
+    transition: border 0.2s;
+}
+
+.formInputsSign input:focus {
+    border: 1.5px solid #dd5339;
+    background: #fff;
+}
+
+.passwordInputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.togglePassword {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #dd5339;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    transition: color 0.2s;
+}
+
+.togglePassword:hover {
+    color: black;
+    opacity: 1;
+}
+
+.termsRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.98rem;
+    margin-top: 8px;
+    color: black;
+}
+
+.termsRow a {
+    color: #dd5339;
+    text-decoration: underline;
+    margin: 0 2px;
+}
+
+.signupBtn {
+    width: 100%;
+    background: linear-gradient(90deg, #dd5339 60%, black 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 13px 0;
+    font-size: 1.08rem;
+    font-weight: bold;
+    margin-top: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s;
+}
+
+.signupBtn:hover {
+    background: linear-gradient(90deg, black 60%, #dd5339 100%);
+}
+
+.orDivider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0 10px 0;
+}
+
+.orDivider span {
+    flex: 1;
+    height: 1px;
+    background: #e3d7f7;
+}
+
+.orDivider p {
+    margin: 0;
+    color: #dd5339;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.googleBtn {
+    width: 100%;
+    background: #fff;
+    color: black;
+    border: 1.5px solid #dd5339;
+    border-radius: 12px;
+    padding: 12px 0;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.googleBtn:hover {
+    background: #dd5339;
+    color: #fff;
+}
+
+.forgotRow {
+    margin-top: 12px;
+    text-align: right;
+}
+
+.forgotLink {
+    color: #dd5339;
+    font-size: 0.98rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.forgotLink:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.loginRow {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 1rem;
+    color: black;
+}
+
+.loginRow a {
+    color: #dd5339;
+    text-decoration: underline;
+    margin-left: 4px;
+}
+/* 1. Frosted glass modal container */
+.codeModal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* 2. Inner modal card with soft translucency */
+.codeModalContent {
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* 3. Modal heading + subtext */
+.codeModalContent h4 {
+  color: black;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.codeModalContent p {
+  font-size: 0.95rem;
+  color: rgb(90, 90, 90);
+  margin-bottom: 16px;
+}
+
+/* 4. Layout for input boxes */
+.codeBoxes {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+/* 5. Glassy individual inputs */
+.codeInput {
+  width: 42px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+  color: black;
+  outline: none;
+  transition: border 0.2s ease, background 0.3s ease;
+}
+
+.codeInput:focus {
+  border: 2px solid #dd5339;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 6. Verify button - gradient glass harmony */
+.verifyBtn {
+  padding: 12px 28px;
+  background: linear-gradient(135deg, rgba(162, 60, 244, 0.9), rgba(31, 11, 58, 0.9));
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(162, 60, 244, 0.2);
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.verifyBtn:hover {
+  transform: translateY(-1px);
+}
+
+.verifyBtn:disabled {
+  background: black;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
+  box-shadow: none;
+  transition: 0.3s;
+}
+
+
+@media (max-width: 600px) {
+    .signup-interface {
+        background: white;
+    }
+
+    .signupForm {
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0 0 18px 0;
+        max-width: 100vw;
+        margin: 0;
+        align-items: stretch;
+    }
+    .formInputsSign {
+        padding: 0 5vw; /* Add horizontal padding for breathing room */
+        gap: 14px;
+    }
+    .formInputsSign input[type="text"],
+    .formInputsSign input[type="email"],
+    .formInputsSign input[type="password"] {
+        font-size: 0.98rem;
+        padding: 12px 12px;
+    }
+    
+    .iconText {
+        font-size: 1rem;
+    }
+    .signupBtn,
+    .googleBtn {
+        font-size: 0.98rem;
+        padding: 12px 0;
+    }
+
+    /* Add this for extra safety on all screens */
+.formInputsSign {
+    box-sizing: border-box;
+}
+}
+

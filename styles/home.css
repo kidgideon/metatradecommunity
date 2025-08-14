@@ -1,0 +1,405 @@
+/* HOMEPAGE STRUCTURE */
+.home-page-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 60px;
+}
+
+.homePageNav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 70px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    color: white;
+    z-index: 1000;
+}
+
+.homePageNav a {
+    color: white;
+    text-decoration: none;
+}
+
+.standardBtn {
+    background-color:  #dd5339;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    margin: 2px;
+    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.standardBtn:hover {
+    background-color: #dd5339;
+}
+
+.navStart{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.navServiceLinks {
+     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.navEnd {
+     width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+}
+.navEnd p {
+    margin: 5px;
+}
+
+.iconSection {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+}
+
+.usFlag {
+    width: 30px;
+    margin: 20px;
+}
+
+/* Footer */
+.footer-modern {
+    width: 100%;
+    background: linear-gradient(90deg, black 60%, #dd5339 100%);
+    color: #fff;
+    padding: 40px 0 10px 0;
+    font-size: 1rem;
+    box-shadow: 0 -2px 24px 0 rgba(162,60,244,0.08);
+}
+.footer-modern-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+.footer-brand {
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.footer-brand .icon {
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+.footer-brand div {
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+    }
+
+    .footer-brand p {
+        width: 100%;
+        text-align: center;
+    }
+.footer-links {
+    flex: 2 1 400px;
+    display: flex;
+    justify-content: center;
+}
+.footer-links div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.footer-links h4 {
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+.footer-links a {
+    color: #e0d7f7;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.footer-links a:hover {
+    color: #fff;
+}
+.footer-social {
+    flex: 1 1 120px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.footer-social a {
+    color: #fff;
+    font-size: 1.3rem;
+    transition: color 0.2s;
+}
+.footer-social a:hover {
+    color: #dd5339;
+}
+.footer-modern-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.98rem;
+    color: #e0d7f7;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+
+/* Hamburger menu */
+.hamburgerBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    z-index: 1101;
+    display: none;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+    position: fixed;
+    top: 0; right: 0; left: 0; bottom: 0;
+    width: 100vw;
+    background: rgba(31,11,58,0.97);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    animation: fadeInMenu 0.3s ease-out forwards;
+}
+
+.mobileMenuLinks {
+    width: 80vw;
+    max-width: 320px;
+    background: #fff;
+    color: black;
+    box-shadow: -2px 0 24px 0 rgba(25, 0, 46, 0.08);
+    padding: 16px 24px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-height: 100vh;
+    animation: slideInMenu 0.3s ease-out forwards;
+
+}
+
+.mobileMenuLinks a {
+    color: #dd5339;
+    font-size: 1.15rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+.mobileMenuLinks a:hover {
+    color: black;
+}
+.mobileMenuLinks .standardBtn {
+    margin-top: 10px;
+    font-size: 1.08rem;
+    width: 100%;
+}
+
+/* Close button */
+.closeMenuBtn {
+    background: none;
+    border: none;
+    color: #dd5339;
+    font-size: 2.2rem;
+    margin-left: auto;
+    padding: 18px 18px 0 0;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeInMenu {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideInMenu {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+
+
+
+/* Responsive Design */
+.desktopOnly { display: flex; }
+.mobileOnly { display: none }
+
+@media (max-width: 1000px) {
+    .footer-modern-content { flex-direction: column; align-items: center; gap: 20px; }
+    .footer-links { flex-direction: column; align-items: center; gap: 20px; }
+    .footer-social { justify-content: center; }
+    .navEnd{
+        width: 10%;
+    }
+
+     .animated-img img { width: 150px !important; height: 150px !important; }
+    
+/* Hamburger menu */
+.hamburgerBtn {
+    display: block;
+}
+
+.homePageFirstSection h3 {
+    width: 95%;
+}
+
+
+.tradechartImg {
+    width: 100%;
+}
+
+.homePageFirstSection h1  {
+    font-size: 200%;
+    padding: 0px;
+}
+
+.homrPageThirdSection {
+    flex-direction: column;
+}
+
+.imageSectionThird {
+    width: 100%;
+    max-width: 300px;
+}
+
+.imageSectionThird img {
+    width: 100%;
+}
+
+.textSectionThird {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.textSectionThird p {
+    font-size: 120%;
+    width: 95%;
+    color: rgb(48, 48, 48);
+    text-align: center;
+}
+
+.homePageSecondSection {
+    flex-direction: column;
+}
+
+.discoveryArea {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} 
+
+.animationPoint {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.textSectionThird h1 {
+    text-align: center;
+}
+
+ 
+.boxesDirection {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+   
+.homrPageThirdSection {
+    flex-direction: column;
+}
+
+.homePageFourthSection  h3{
+    width: 95%;
+    text-align: center;
+}
+}
+@media (max-width: 1200px) {
+    .navServiceLinks.desktopOnly,
+    .navEnd .desktopOnly,
+    .usFlag.desktopOnly {
+        display: none !important;
+    }
+    .mobileOnly {
+        display: inline-flex !important;
+    }
+    .homePageNav {
+        height: 60px;
+        padding: 0 10px;
+    }
+    .iconSection h3.iconText {
+        font-size: 1.1rem;
+    }
+    .hamburgerBtn {
+    display: block;
+}
+ .navEnd{
+        width: 10%;
+    }
+
+ 
+
+
+
+}
+
+
+@media (max-width: 1000px) {
+    .animated-img img { width: 100px !important; height: 100px !important; margin-left: 50px;}
+    .hamburgerBtn {
+    display: block;
+}
+ .navEnd{
+        width: 10%;
+    }
+    
+.homrPageThirdSection {
+    flex-direction: column;
+}
+}

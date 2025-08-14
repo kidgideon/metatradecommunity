@@ -1,0 +1,39 @@
+/* background black */
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.containers {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.icon {
+    color: #f4c203;
+    font-size: 20px;
+}
+
+.iconText {
+    color: #dd5339
+}
+
+a {
+     color: inherit;
+  text-decoration: none;
+}
+/* ========== Base ========== */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: black;
+  background-color: #fff;
+}
