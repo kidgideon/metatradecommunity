@@ -5,6 +5,9 @@ import useAuth from "../config/Hooks/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "sonner";
 
+
+
+
 const Signup = () => {
   const { signup, loginWithGoogle } = useAuth();
   const navigate = useNavigate();

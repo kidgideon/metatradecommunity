@@ -74,7 +74,7 @@
   flex: 0 0 auto;
   min-width: 220px;
   max-width: 250px;
-  background: #2b174e;
+  background: #006f94;
   padding: 1rem;
   border-radius: 10px;
   border-left: 4px solid #006f94;
@@ -94,7 +94,7 @@
 }
 
 .x-mgu21-form {
-  background: #291a42;
+  background: #003c4e;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 2rem;
@@ -120,7 +120,7 @@
   border-radius: 6px;
   border: none;
   outline: none;
-  background: #38235f;
+  background: #006f94;
   color: white;
 }
 
@@ -131,7 +131,7 @@
   border-radius: 6px;
   border: none;
   outline: none;
-  background: #38235f;
+  background: rgb(199, 199, 199);
   color: white;
 }
 .x-mgu21-form button {
@@ -146,7 +146,7 @@
 }
 
 .x-mgu21-manual-notif {
-  background: #291a42;
+  background: #003446;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 2rem;
@@ -166,7 +166,7 @@
 
 .x-mgu21-manual-notif textarea {
   width: 94%;
-  background: #38235f;
+  background: rgb(226, 226, 226);
   color: white;
   border: none;
   border-radius: 6px;

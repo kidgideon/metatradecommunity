@@ -226,7 +226,7 @@ const Payment = () => {
           )}
         </div>
 
-        <div className="existing-payment-channels">
+        <div style={{marginBottom: "30px", marginTop: "10px"}} className="existing-payment-channels">
           {channels.map((c, i) => (
             <div
               className="payment-channel"

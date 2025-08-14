@@ -19,6 +19,8 @@ import {
 } from "firebase/firestore";
 import { toast } from "sonner";
 
+const defaultImage = "https://firebasestorage.googleapis.com/v0/b/metatradecommunity.firebasestorage.app/o/default.jpg?alt=media&token=d2ac2ef2-144c-4ac9-8149-3afb024a8808";
+
 const useAuth = () => {
   const [user, setUser] = useState(null);
 
@@ -73,6 +75,7 @@ const useAuth = () => {
         following: 0,
         accountLevel: "basic",
         isActivated: false,
+        picture: defaultImage,
       });
 
       toast.success("🎉 Account created successfully!", { id: toastId });
