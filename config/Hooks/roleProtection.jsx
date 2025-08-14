@@ -44,10 +44,10 @@ const RoleProtectedRoute = ({ children }) => {
         if (toastId.current) toast.dismiss(toastId.current);
 
         if (role === "admin") {
-          toast.success("✅ Admin access verified");
+          toast.success("Admin access verified");
           setVerified(true);
         } else {
-          toast.error("🚫 You are not authorized as an admin");
+          toast.error("You are not authorized as an admin");
           setVerified(false);
         }
       } catch (err) {

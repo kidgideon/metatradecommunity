@@ -66,14 +66,14 @@ const Signup = () => {
       // Signup function will already toast & redirect to login
       return;
     } else {
-      toast.error("❌ Account creation failed.");
+      toast.error("Account creation failed.");
     }
   };
 
   const handleGoogleLogin = async () => {
     const result = await loginWithGoogle();
     if (result.success) {
-      toast.success("🎉 Signed in with Google!");
+      toast.success("Signed in with Google!");
       navigate("/home");
     }
   };
