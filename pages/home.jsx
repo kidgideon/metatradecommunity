@@ -20,7 +20,7 @@ const Home = () => {
     <div className="home-page-container">
       <NavBar />
       <Hero/>
-      <div style={{margin: "30px 0px"}}>
+      <div style={{margin: "30px 0px", width: "100%"}}>
   <SlideStocks/>
       </div>
       <CommunityImpact/>
