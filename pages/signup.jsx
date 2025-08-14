@@ -5,9 +5,6 @@ import useAuth from "../config/Hooks/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "sonner";
 
-
-
-
 const Signup = () => {
   const { signup, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
@@ -19,6 +16,9 @@ const Signup = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    identificationNumber: "",
+    phoneNumber: "",
+    dateOfBirth: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -34,18 +34,37 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    const { email, password, confirmPassword, firstName, lastName, username } = formData;
+    const {
+      email,
+      password,
+      confirmPassword,
+      firstName,
+      lastName,
+      username,
+      identificationNumber,
+      phoneNumber,
+      dateOfBirth,
+    } = formData;
 
     if (password !== confirmPassword) {
       toast.error("Passwords do not match.");
       return;
     }
 
-    const result = await signup({ email, password, firstName, lastName, username });
+    const result = await signup({
+      email,
+      password,
+      firstName,
+      lastName,
+      username,
+      identificationNumber,
+      phoneNumber,
+      dateOfBirth,
+    });
 
     if (result.success) {
-      toast.success("✅ Account created successfully.");
-      navigate("/home");
+      // Signup function will already toast & redirect to login
+      return;
     } else {
       toast.error("❌ Account creation failed.");
     }
@@ -65,7 +84,7 @@ const Signup = () => {
 
       <div className="signupForm">
         <div className="topLayer">
-        <span>Create Portfolio</span>
+          <span>Create Portfolio</span>
         </div>
 
         <form className="formInputsSign" onSubmit={handleSignup}>
@@ -98,6 +117,34 @@ const Signup = () => {
             name="username"
             placeholder="Username"
             value={formData.username}
+            onChange={handleChange}
+            required
+          />
+
+          {/* New Professional Fields */}
+          <input
+            type="text"
+            name="identificationNumber"
+            placeholder="Identification Number (SSN/Passport)"
+            value={formData.identificationNumber}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="tel"
+            name="phoneNumber"
+            placeholder="Phone Number"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="date"
+            name="dateOfBirth"
+            placeholder="Date of Birth"
+            value={formData.dateOfBirth}
             onChange={handleChange}
             required
           />
@@ -147,6 +194,7 @@ const Signup = () => {
             <span></span>
           </div>
 
+          {/* Still allow Google login for existing users */}
           <button className="googleBtn" type="button" onClick={handleGoogleLogin}>
             <i className="fa-brands fa-google"></i> Continue with Google
           </button>

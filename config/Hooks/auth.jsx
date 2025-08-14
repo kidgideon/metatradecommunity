@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   onAuthStateChanged,
+  sendEmailVerification,
   signOut,
   GoogleAuthProvider,
 } from "firebase/auth";
@@ -18,11 +19,14 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
-const defaultImage = "https://firebasestorage.googleapis.com/v0/b/metatradecommunity.firebasestorage.app/o/default.jpg?alt=media&token=d2ac2ef2-144c-4ac9-8149-3afb024a8808";
+const defaultImage =
+  "https://firebasestorage.googleapis.com/v0/b/metatradecommunity.firebasestorage.app/o/default.jpg?alt=media&token=d2ac2ef2-144c-4ac9-8149-3afb024a8808";
 
 const useAuth = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -31,7 +35,17 @@ const useAuth = () => {
     return () => unsubscribe();
   }, []);
 
-  const signup = async ({ email, password, firstName, lastName, username }) => {
+  // SIGN UP
+  const signup = async ({
+    email,
+    password,
+    firstName,
+    lastName,
+    username,
+    identificationNumber,
+    phoneNumber,
+    dateOfBirth,
+  }) => {
     const toastId = toast.loading("Creating your account...");
 
     try {
@@ -63,6 +77,9 @@ const useAuth = () => {
         username,
         firstName,
         lastName,
+        identificationNumber,
+        phoneNumber,
+        dateOfBirth,
         notifications: [],
         role: "client",
         createdAt: Date.now(),
@@ -78,7 +95,14 @@ const useAuth = () => {
         picture: defaultImage,
       });
 
-      toast.success("🎉 Account created successfully!", { id: toastId });
+      // Send verification email
+      await sendEmailVerification(cred.user);
+      toast.success("📩 Account created! Please check your email for a verification link.", { id: toastId });
+
+      // Sign out immediately to prevent unverified login
+      await signOut(auth);
+      navigate("/login");
+
       return { success: true, uid: cred.user.uid };
     } catch (err) {
       toast.error(err.message || "❌ Account creation failed.", { id: toastId });
@@ -86,19 +110,41 @@ const useAuth = () => {
     }
   };
 
-  const login = async (email, password) => {
-    const toastId = toast.loading("Logging in...");
+  // LOGIN
+const login = async (email, password) => {
+  const toastId = toast.loading("Logging in...");
 
-    try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      toast.success("✅ Logged in successfully!", { id: toastId });
-      return { success: true, user: result.user };
-    } catch (err) {
-      toast.error(err.message || "❌ Login failed.", { id: toastId });
+  try {
+    const result = await signInWithEmailAndPassword(auth, email, password);
+
+    if (!result.user.emailVerified) {
+      // Send verification email again
+      await sendEmailVerification(result.user);
+
+      await signOut(auth);
+      toast.error(
+        "🚫 Your email is not verified. We've sent you a new verification email — please check your inbox.",
+        { id: toastId }
+      );
       return { success: false };
     }
-  };
 
+    toast.success("✅ Logged in successfully!", { id: toastId });
+    return { success: true, user: result.user };
+  } catch (err) {
+    if (err.code === "auth/user-not-found") {
+      toast.error("🚫 No user with this email.", { id: toastId });
+    } else if (err.code === "auth/wrong-password") {
+      toast.error("🚫 Incorrect password.", { id: toastId });
+    } else {
+      toast.error(err.message || "❌ Login failed.", { id: toastId });
+    }
+    return { success: false };
+  }
+};
+
+
+  // GOOGLE LOGIN (No Signup)
   const loginWithGoogle = async () => {
     const toastId = toast.loading("Signing in with Google...");
     const provider = new GoogleAuthProvider();
@@ -111,58 +157,19 @@ const useAuth = () => {
       const docSnap = await getDoc(userRef);
 
       if (!docSnap.exists()) {
-        let [firstName, ...rest] = displayName.split(" ");
-        let lastName = rest.join(" ") || "User";
-
-        const baseUsername = firstName.toLowerCase().replace(/[^a-z0-9]/gi, "");
-        let username = baseUsername;
-        let usernameTaken = true;
-        let attempts = 0;
-        const usersRef = collection(db, "users");
-
-        while (usernameTaken && attempts < 5) {
-          const q = query(usersRef, where("username", "==", username));
-          const snapshot = await getDocs(q);
-          if (snapshot.empty) {
-            usernameTaken = false;
-          } else {
-            const randNum = Math.floor(Math.random() * 10000);
-            username = `${baseUsername}${randNum}`;
-            attempts++;
-          }
-        }
-
-        if (usernameTaken) {
-          username = `${baseUsername}${Date.now()}`;
-        }
-
-        await setDoc(userRef, {
-          uid,
-          email,
-          firstName,
-          lastName,
-          username,
-          provider: "google",
-          picture: photoURL,
-          createdAt: Date.now(),
-          notifications: [],
-          role: "client",
-          walletBalance: 0,
-          transactions: [],
-          assets: [],
-          bio: "joined meta trade community",
-          location: "US",
-          followers: 0,
-          following: 0,
-          accountLevel: "basic",
-          isActivated: false,
-        });
-
-        toast.success(`🎉 Welcome, ${firstName}!`, { id: toastId });
-      } else {
-        toast.success("👋 Welcome back!", { id: toastId });
+        // Prevent signup with Google
+        toast.error("🚫 No user with this email. Please sign up using email/password.", { id: toastId });
+        await signOut(auth);
+        return { success: false };
       }
 
+      if (!result.user.emailVerified) {
+        await signOut(auth);
+        toast.error("🚫 Your email has not been verified. Please verify before logging in.", { id: toastId });
+        return { success: false };
+      }
+
+      toast.success("👋 Welcome back!", { id: toastId });
       return { success: true, user: result.user };
     } catch (err) {
       toast.error("❌ Google login failed.", { id: toastId });

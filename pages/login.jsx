@@ -8,6 +8,8 @@ const Login = () => {
   const { login, loginWithGoogle } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -19,14 +21,32 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMsg("");
+    setLoading(true);
+
     const { email, password } = formData;
-    const result = await login(email, password);
-    if (result.success) navigate("/home");
+    const result = await login(email.trim(), password);
+
+    setLoading(false);
+
+    if (result.success) {
+      navigate("/home");
+    } else {
+      setErrorMsg(result.message || "Login failed. Please check your credentials.");
+    }
   };
 
   const handleGoogleLogin = async () => {
+    setErrorMsg("");
+    setLoading(true);
+
     const result = await loginWithGoogle();
-    if (result.success) navigate("/home");
+
+    setLoading(false);
+
+    if (result.success) {
+      navigate("/home");
+    }
   };
 
   return (
@@ -34,14 +54,17 @@ const Login = () => {
       <NavBar />
       <div className="authpage-form">
         <div className="topLayer">
-        <span className="welcomeBack">Welcome Back</span>
+          <span className="welcomeBack">Welcome Back</span>
         </div>
+
         <form className="authpage-formInputs" onSubmit={handleSubmit}>
+        
           <input
             type="email"
             name="email"
             placeholder="Email"
             required
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
           />
@@ -52,6 +75,7 @@ const Login = () => {
               name="password"
               placeholder="Password"
               required
+              autoComplete="current-password"
               value={formData.password}
               onChange={handleChange}
             />
@@ -59,7 +83,11 @@ const Login = () => {
               className="authpage-togglePassword"
               onClick={() => setShowPassword((v) => !v)}
             >
-              <i className={`fa-solid ${showPassword ? "fa-eye" : "fa-eye-slash"}`}></i>
+              <i
+                className={`fa-solid ${
+                  showPassword ? "fa-eye" : "fa-eye-slash"
+                }`}
+              ></i>
             </span>
           </div>
 
@@ -69,8 +97,17 @@ const Login = () => {
             </Link>
           </div>
 
-          <button className="authpage-loginBtn" type="submit">
-            <i className="fa-solid fa-right-to-bracket"></i> access portfolio
+          <button
+            className="authpage-loginBtn"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? (
+              <i className="fa-solid fa-spinner fa-spin"></i>
+            ) : (
+              <i className="fa-solid fa-right-to-bracket"></i>
+            )}{" "}
+            access portfolio
           </button>
 
           <div className="authpage-orDivider">
@@ -83,8 +120,14 @@ const Login = () => {
             className="authpage-googleBtn"
             type="button"
             onClick={handleGoogleLogin}
+            disabled={loading}
           >
-            <i className="fa-brands fa-google"></i> Continue with Google
+            {loading ? (
+              <i className="fa-solid fa-spinner fa-spin"></i>
+            ) : (
+              <i className="fa-brands fa-google"></i>
+            )}{" "}
+            Continue with Google
           </button>
 
           <div className="authpage-loginRow">
