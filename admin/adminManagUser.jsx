@@ -164,10 +164,10 @@ const ManageUser = () => {
             <>
               <div className="user-info">
                 <div><img src={userData.picture} alt="" /></div>
-                <div> <p> phone no: {userData.phoneNumber}</p></div>
-                 <div>Dob: {userData.dateOfBirth}</div>
-                    <div> Email: {userData.email}</div>
-                    <div>Id: {userData.identificationNumber}</div>
+                <div> <p> phone no: {userData.phoneNumber || "empty" }</p></div>
+                 <div>Dob: {userData.dateOfBirth || "empty"}</div>
+                    <div> Email: {userData.email || "empty"}</div>
+                    <div>Id: {userData.identificationNumber || "empty"}</div>
               </div>
 
               <div className="x-mgu21-balance">
