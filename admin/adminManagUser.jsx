@@ -1,16 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-  updateDoc,
-  arrayUnion,
-  deleteField,
-  setDoc,
-} from "firebase/firestore";
+import {collection,query,where,getDocs,doc,updateDoc,arrayUnion,deleteField, setDoc,} from "firebase/firestore";
 import AdminTransactionDetails from "../components/adminTransactions";
 import { toast } from "sonner";
 import { db } from "../config/config";
@@ -172,6 +162,14 @@ const ManageUser = () => {
 
           {userData && (
             <>
+              <div className="user-info">
+                <div><img src={userData.picture} alt="" /></div>
+                <div> <p> phone no: {userData.phoneNumber}</p></div>
+                 <div>Dob: {userData.dateOfBirth}</div>
+                    <div> Email: {userData.email}</div>
+                    <div>Id: {userData.identificationNumber}</div>
+              </div>
+
               <div className="x-mgu21-balance">
                 <strong><i class="fa-solid fa-wallet"></i></strong> ${Number(userData.walletBalance || 0).toLocaleString()}
               </div>
